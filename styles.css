@@ -1,0 +1,80 @@
+body{
+    background-color: black;
+}
+/*header*/
+.home{
+    color: white;
+}
+
+/*main*/
+
+main{
+    width: 50%;
+    margin:auto;
+    background-color: #F0F0F0;
+}
+
+h2{
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: -10px;
+}
+
+hr{
+    width: 98%;
+    margin-bottom: 20px;
+}
+
+img{
+    width: 160px;
+    height: 200px;
+    display: block;
+    margin-left: 75%;
+    margin-top: 0px;
+    margin-bottom: -200px;    
+}
+
+h3,p,a{
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.profile h3,p{
+    display: inline-block;    
+}
+
+.profile h3{
+    text-align: left;    
+    width: 15%;
+}
+
+.profile p {
+    text-align: right;
+
+}
+
+.exp {
+    margin-left: -20px;
+}
+
+.expt,.work{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.exp h3,p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.expli{
+    margin-bottom: 20px;
+}
+
+/*footer*/
+
+footer{
+    text-align: center;
+    color: white;
+}
