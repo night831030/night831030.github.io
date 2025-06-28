@@ -1,0 +1,73 @@
+/* seting backround and word type */
+body {
+    /* background-color: #303030; */
+    font-family: Arial, sans-serif;
+    /* color: #fff; */
+    margin-left: 25%;
+    margin-top: 3%;
+    max-width: 80%;
+}
+
+.darkmode {
+    background-color: #303030;
+    color: #fff;
+    .list{
+        background: #202020;
+    }
+}
+
+.list { /*.開頭為自訂分類*/
+    max-width: 5000px;
+    width: 60%;
+    background-color: #f9f9f9;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+/* title color and margin */
+H1 {
+    color: #0066CC;
+    margin-bottom: 20px;
+}
+
+/* line margin, size and type,  */
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* image size */
+img {
+    max-width: 500px;
+    max-height: 300px;
+}
+
+/* delete line for checklist */
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* list */
+li {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+/* button */
+button {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    padding: 4px;
+    font-size: 16px;
+    width: 200px;
+}
