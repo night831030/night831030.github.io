@@ -1,17 +1,30 @@
 body{
-    background-color: black;
+    background-color: #202020;
 }
 /*header*/
-.home{
-    color: white;
+.header{
+    color: #f3f3f3;
+}
+
+/* Theme */
+.darkmode {
+    background-color: #303030;
+    color: #fff;
+    .list{
+        background: #202020;
+    }
 }
 
 /*main*/
-
 main{
     width: 50%;
     margin:auto;
-    background-color: #F0F0F0;
+    background-color: #303030;
+    color: #f3f3f3;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
 }
 
 h2{
@@ -72,8 +85,15 @@ h3,p,a{
     margin-bottom: 20px;
 }
 
-/*footer*/
+a{
+    color: #bbb;
+}
 
+a:hover {
+    color: white;
+}
+
+/*footer*/
 footer{
     text-align: center;
     color: white;

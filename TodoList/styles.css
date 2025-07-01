@@ -1,22 +1,26 @@
 /* seting backround and word type */
 body {
-    /* background-color: #303030; */
     font-family: Arial, sans-serif;
-    /* color: #fff; */
     margin-left: 25%;
     margin-top: 3%;
     max-width: 80%;
 }
 
+/* header */
+.header{
+    color: #f3f3f3;
+}
+
+/* Theme */
 .darkmode {
     background-color: #303030;
-    color: #fff;
+    color: #f3f3f3;
     .list{
         background: #202020;
     }
 }
 
-.list { /*.開頭為自訂分類*/
+.list {
     max-width: 5000px;
     width: 60%;
     background-color: #f9f9f9;
@@ -28,7 +32,6 @@ body {
 
 /* title color and margin */
 H1 {
-    color: #0066CC;
     margin-bottom: 20px;
 }
 
@@ -36,12 +39,6 @@ H1 {
 p {
     font-size: 16px;
     line-height: 1.5;
-}
-
-/* image size */
-img {
-    max-width: 500px;
-    max-height: 300px;
 }
 
 /* delete line for checklist */
