@@ -10,13 +10,25 @@
     <meta name="keywords" content="何威霆,履歷,求職,software,作品">
     <link rel="stylesheet" href="styles.css">
 </head>
-
-<body>
+<script>
+    function turnoffLinght() {
+        const mode = document.getElementById("mode")
+            if (mode.classList.contains("darkmode")){
+                mode.classList.remove("darkmode");
+            }else{
+                mode.classList.add("darkmode");
+            }
+        };
+</script>
+<body id="mode" class="darkmode">
     <header>
         <div>
+            <div>
             <a href="index.html" class="header" ><em><strong>WeiTing He</strong></em></a>
             <a href="index-en.html" class="header">English type</a>
-            <a href="TodoList/TodoList.html" class="header">TodoList</a>
+                <a href="TodoList/TodoList.html" class="header">TodoList</a>
+            </div>
+            <button onclick="turnoffLinght()">🌞/🌙Theme</button>
         </div>
     </header>
     <main>

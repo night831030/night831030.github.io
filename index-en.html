@@ -10,11 +10,24 @@
     <meta name="keywords" content="WEI-TING, HE, Resume, Job search, software, works">
     <link rel="stylesheet" href="styles.css">
 </head>
-
-<body>
+<script>
+    function turnoffLinght() {
+        const mode = document.getElementById("mode")
+            if (mode.classList.contains("darkmode")){
+                mode.classList.remove("darkmode");
+            }else{
+                mode.classList.add("darkmode");
+            }
+        };
+</script>
+<body id="mode" class="darkmode">
     <header>
         <div>
-            <a href="index.html" class="header" ><em><strong>WeiTing He</strong></em></a> <a href="TodoList/TodoList.html" class="header">TodoList</a>
+            <div>
+                <a href="index.html" class="header" ><em><strong>WeiTing He</strong></em></a>
+                <a href="TodoList/TodoList.html" class="header">TodoList</a>
+            </div>
+            <button onclick="turnoffLinght()">🌞/🌙Theme</button>
         </div>
     </header>
     <main>
@@ -39,10 +52,10 @@
             <h2>Summary</h2>
             <hr>
             <ul>
-                <li>Motivated professional with a background in electronic engineering and IT support,</li>
-                <li>transitioning into software development.</li>
-                <li>Skilled in progarm language, with strong problem-solving abilities and teamwork gained from military experience.</li>
-                <li>Eager to contribute to innovative software projects in Ireland.</li>
+                <li>Motivated and results-oriented professional with a background in electronic engineering and technical support, transitioning into a software development career. </li>
+                <li>Proven ability to enhance operational efficiency by developing web-based tools and streamlining workflows. </li>
+                <li>Skilled in utilizing SQL for data management and experienced in training junior team members. </li>
+                <li>Eager to apply strong problem-solving skills and a collaborative mindset to a challenging software developer role in Ireland.</li>
             </ul>
         </div>
         <div>
@@ -53,10 +66,12 @@
                     <div class="exp">                
                         <h3 class="work">Pocket Games Soft</h3><p class="expt">Aug 2023 – May 2025</p>
                         <ul>
-                            <li>Provided integration and technical support to clients.</li>
-                            <li>Assisted clients in troubleshooting and resolving software-related issues.</li>
-                            <li>Maintained fast and clear communication to ensure customer satisfaction.</li>
-                            <li>Recognized as one of the top performers in the support team for efficiency and accuracy.</li>
+                            <li>Developed an internal web-based tool to automate and simplify daily operational tasks, reducing manual work for colleagues by an estimated 30%.</li>
+                            <li>Utilized SQL queries to directly manage and modify client data, ensuring data integrity and resolving complex customer issues efficiently.</li>
+                            <li>Streamlined and optimized team workflows, resulting in a smoother and more efficient operational process.</li>
+                            <li>Mentored and trained new team members on technical procedures and best practices, contributing to a faster onboarding process.</li>
+                            <li>Selected for leadership training by management in recognition of strong performance and potential.</li>
+                            <li>Provided high-level technical support to clients, consistently maintaining clear communication and high customer satisfaction.</li>
                         </ul>
                     </div>
                 </li>
@@ -96,6 +111,8 @@
             <div>
                 <h3>Certifications:</h3>
                 <p>EMT-2 (Emergency Medical Technician – Level 2)</p>
+                <p>Forklift</p>
+                <p>IRR(Introduction to Rope Rescue)</p>
             </div>
         </div>
     </main>

@@ -1,54 +1,72 @@
 /* seting backround and word type */
 body {
     font-family: Arial, sans-serif;
-    max-width: 80%;
+    background-color: #e9e9e9;
+}
+
+header div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* header */
 .header {
-    color: #f3f3f3;
-}
-
-.Th{
-    float: right;
+    color: #202020;
 }
 
 /* Theme */
 .darkmode {
     background-color: #303030;
     color: #f3f3f3;
+    .header {
+        color: #f3f3f3;
+    }
     .list{
-        background: #202020;
+        background-color: #202020;
+    }
+    button {
+    background-color: #880000;
+    color: white;
+    }
+    ::selection {
+        background-color: #f3f3f3;
+        color: #303030;
     }
 }
 
 /* main page */
 main{
-    width: auto; 
-    margin-left: 25%;
-    padding: 50px;
+    width: 60%;
+    max-width: 80%; 
+    margin: auto;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
 /* main list */
 .list {
-    width: 60%;
-    background-color: #f9f9f9;
+    margin: auto;
+    max-width: 80%;
+    background-color: #d3d3d3;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 50px;
+    border-radius: 20px;
 }
 
-/* title color and margin */
+/* title margin */
 H1 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* line margin, size and type,  */
 p {
     font-size: 16px;
     line-height: 1.5;
+    padding-left: 45px;
 }
 
 /* delete line for checklist */
@@ -57,25 +75,33 @@ p {
     color: gray;
 }
 
-/* list */
+/* list inside */
 li {
-    font-size: 18px;
-    margin: 8px 0;
+    font-size: 20px;
+    margin: 1px;
+    max-width: 90%;
+    width: 600px;
 }
 
 /* button */
 button {
-    background-color: #ff6666;
-    color: white;
+    background-color: #ff7777;
     border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 3px 8px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 /* add todo input */
 input[type="text"] {
-    padding: 4px;
+    margin-left: 5%;
+    padding-left: 15%;
+    padding: 5px;
     font-size: 16px;
-    width: 200px;
+    width: 400px;
+    max-width: 80%;
+}
+
+H2 {
+    margin-left: 5%;
 }
