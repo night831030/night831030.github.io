@@ -1,8 +1,13 @@
 let todos = [];
 document.addEventListener("DOMContentLoaded", () => {
     loadingTodos();
+    showResult();
+    checkall();
+    clearFinish();
+    deleteAll();
+    // fetchTodosFromServer();
     addbutton();
-    turnoffLinght();
+    turnoffLight();
     document.getElementById("todoInput").addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             entertext();
@@ -12,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //loading the localStorage
 function loadingTodos() {
-    save = JSON.parse(localStorage.getItem("todos"));
+    let save = JSON.parse(localStorage.getItem("todos"));
     if (Array.isArray(save)) {
         todos = save;
         render();
@@ -37,24 +42,29 @@ function entertext() {
     
     if (input != "") {
         todos.push({text: input, completed: false});
-        render();
+        showResult();
         saveTodo();
         enter.value = "";
     }
 }
 
 //render the page
-function render() {
+function render(item) {
     const list = document.getElementById("todoList");
     list.innerHTML = "";
-    
-    if (todos.length === 0) {
+
+    if (!item) {
+        item = todos
+    }
+
+    if (item.length === 0) {
         const not = document.createElement("p");
         not.innerText = "do some thing...";
         not.style.color = "#aaa";
         list.appendChild(not);
     }
-    todos.forEach((usertodo, index) => {
+
+    item.forEach((usertodo, index) => {
         const newItem = document.createElement("li");
         
         const checkbox = document.createElement("input");
@@ -62,38 +72,75 @@ function render() {
         checkbox.style.margin = "10px";
         checkbox.checked = usertodo.completed;
         
-        const textnode = document.createTextNode(usertodo.text);
+        const newspan = document.createElement("span");
+        newspan.textContent = usertodo.text;
         
         const deletebutton = document.createElement("button");
         deletebutton.innerText = "delete";
         deletebutton.style.margin = "10px";
         
         checkbox.addEventListener("change", function(){
-            todos[index].completed = checkbox.checked;
-            render();
+            item[index].completed = checkbox.checked;
+            showResult();
             saveTodo();
         });
+
+        newspan.addEventListener("dblclick", () => {
+            const newnode = document.createElement("input");
+            newnode.type = "text";
+            newnode.value = newspan.textContent;
+
+            if (newItem.classList.contains("editing")) {
+                return;
+            }
+            newItem.classList.add("editing");
+
+            newItem.replaceChild(newnode, newspan);
+            newnode.focus();
+
+            const finishedit = () => {
+                const newtext = newnode.value.trim();
+
+                if (newtext === '') {
+                    newItem.replaceChild(newspan, newnode);
+                    newItem.classList.remove("editing");
+                    return;
+                }
+
+                newItem.replaceChild(newspan, newnode);
+                newspan.textContent = newtext;
+                newItem.classList.remove("editing");
+                item[index].text = newtext;
+                saveTodo();
+            };
+            
+            newnode.addEventListener("blur", finishedit);
+            newnode.addEventListener("keydown", (k) => {
+                if (k.key === "Enter") {
+                    finishedit();
+                }
+            })
+        })
         
         deletebutton.addEventListener("click", function(){
-            todos.splice(index, 1);
-            render();
-            saveTodo();
+            const realIndex = todos.findIndex(t => t.text === usertodo.text && t.completed === usertodo.completed);
+            if (realIndex > -1) {
+                todos.splice(realIndex, 1);
+                showResult();
+                saveTodo();
+            }
         });
         
         if (usertodo.completed) newItem.classList.add("completed")
             
             newItem.appendChild(checkbox);
-            newItem.appendChild(textnode);
+            newItem.appendChild(newspan);
             newItem.appendChild(deletebutton);
             list.appendChild(newItem);
     });
-        
-    checkall();
-    clearFinish();
-    deleteAll();
 }
     
-    //check all
+//check all
 function checkall() {
     const check = document.getElementById("checkAll")
         
@@ -103,11 +150,11 @@ function checkall() {
         check.checked = false;
     }
         
-    check.addEventListener("change", ()=> {
+    check.addEventListener("change", () => {
         todos.forEach(c => {
             c.completed = check.checked;
         });
-        render();
+        showResult();
         saveTodo();
     });
 }
@@ -116,7 +163,7 @@ function checkall() {
 function clearFinish() {
     document.getElementById("clear").addEventListener("click", () => {
         todos = todos.filter(todo => !todo.completed);
-        render();
+        showResult();
         saveTodo();
     });
 }
@@ -125,19 +172,85 @@ function clearFinish() {
 function deleteAll() {
     document.getElementById("deleteList").addEventListener("click", () => {
         todos = [];
-        render();
+        showResult();
         saveTodo();
     });
 }
 
 //change page theme
-function turnoffLinght() {
+function turnoffLight() {
     const mode = document.getElementById("mode")
     document.getElementById("Theme").addEventListener("click", () => {
-        if (mode.classList.contains("darkmode")){
-            mode.classList.remove("darkmode");
-        }else{
-            mode.classList.add("darkmode");
-        }
+        mode.classList.toggle("darkmode");
     });
+}
+
+//filter and search
+let selected;
+let keyword;
+
+function showResult() {
+    let result = todos
+
+    if (selected === "filter-completed") {
+        result = result.filter(todo => todo.completed);
+    } else if (selected === "filter-uncompleted"){
+        result = result.filter(todo => !todo.completed);
+    }
+
+    if (keyword) {
+        result = result.filter(todo => todo.text.toLowerCase().includes(keyword));
+    }
+
+    render(result);
+}
+
+document.getElementById("filter").addEventListener("change", (s) => {
+    selected = s.target.value;
+
+    showResult();
+})
+
+document.getElementById("searchInput").addEventListener("input", (search) => {
+    keyword = search.target.value.toLowerCase();
+
+    showResult();
+})
+
+//fetch sevrver
+function fetchTodosFromServer() {
+  fetch("http://localhost:3000/api/todos")
+    .then(re => re.json())
+    .then(data => {
+      todos = data.map(item => ({
+        text: item.text,
+        completed: item.completed
+      }));
+      render();
+      console.log("Fetched data from server:", data);
+    })
+    .catch(error => {
+      console.error("Error fetching todos:", error);
+    });
+}
+
+//fetch dog api
+function callDogApi() {
+    fetch('https://dog.ceo/api/breeds/image/random')
+        .then(re => re.json())
+        .then(data => {
+            console.log(data);
+            document.querySelector('#Picture').innerHTML = `<img src="${data.message}" class="Picture" alt="dog" />`;
+        })
+        .catch(err => console.error(err));
+}
+
+function callCatApi() {
+    fetch('https://cataas.com/cat?json=true')
+        .then(re => re.json())
+        .then(data => {
+            console.log(data);
+            document.querySelector('#Picture').innerHTML = `<img src="${data.url}" class="Picture" alt="cat" />`;
+        })
+        .catch(err => console.error(err));
 }

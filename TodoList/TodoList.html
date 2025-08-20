@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css" />
-        <script src="Todolistscript.js"></script>
         <title>Your todo List</title>
     </head>
     <body id="mode" class="darkmode">
@@ -13,22 +12,37 @@
                 <div>
                     <a href="../index.html" class="header" ><em><strong>WeiTing He</strong></em></a>
                 </div>
-                <button id="Theme" class="Th">🌞/🌙Theme</button>
+                <button id="Theme" class="Theme">🌞/🌙Theme</button>
             </div>
         </header>
         <main>
-            <H1>Welcome here! you can make your todo list</H1>
+            <h1>Welcome here! you can make your todo list</h1>
             <div class="list">
                 <H2>to do list:</H2>
-                <input type="text" id="todoInput" placeholder="what do your want to do?">
+                <input type="text" id="todoInput" placeholder="what do you want to do?">
                 <button id="addTodo">add to do</button>
-                <p>
+                <div class="selectbutton">
                     <input type="checkbox" id="checkAll">
                     <button id="clear">clear finish todo</button>
                     <button id="deleteList">delete all</button>
-                </p>
+                    <div>
+                        <select class="filter-group" id="filter">
+                            <option value="filter-all" selected>All</option>
+                            <option value="filter-completed">Completed</option>
+                            <option value="filter-uncompleted">Uncompleted</option>
+                        </select>
+                        <input type="text" id="searchInput" class="Searchbox" placeholder="Search you todos...">
+                    </div>
+                </div>
                 <ul id="todoList"></ul>
+                <div class="callImg">
+                    <button onclick="callDogApi()">call a dog</button>
+                    <button onclick="callCatApi()">call a cat</button>
+                </div>
+                <div id="Picture">
+                </div>
             </div>
         </main>
     </body>
+    <script src="Todolistscript.js"></script>
     </html>
