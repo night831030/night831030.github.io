@@ -18,10 +18,10 @@
         <main>
             <h1>Welcome here! you can make your todo list</h1>
             <div class="list">
-                <H2>to do list:</H2>
+                <h2>to do list:</h2>
                 <input type="text" id="todoInput" placeholder="what do you want to do?">
                 <button id="addTodo">add to do</button>
-                <div class="selectbutton">
+                <div class="selectButton">
                     <input type="checkbox" id="checkAll">
                     <button id="clear">clear finish todo</button>
                     <button id="deleteList">delete all</button>
@@ -31,7 +31,7 @@
                             <option value="filter-completed">Completed</option>
                             <option value="filter-uncompleted">Uncompleted</option>
                         </select>
-                        <input type="text" id="searchInput" class="Searchbox" placeholder="Search you todos...">
+                        <input type="text" id="searchInput" placeholder="Search you todos...">
                     </div>
                 </div>
                 <ul id="todoList"></ul>
@@ -39,10 +39,9 @@
                     <button onclick="callDogApi()">call a dog</button>
                     <button onclick="callCatApi()">call a cat</button>
                 </div>
-                <div id="Picture">
-                </div>
+                <div id="picture" class="showPicture"></div>
             </div>
         </main>
     </body>
-    <script src="Todolistscript.js"></script>
+    <script src="TodoListScript.js"></script>
     </html>

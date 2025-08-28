@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     clearFinish();
     deleteAll();
     // fetchTodosFromServer();
-    addbutton();
-    turnoffLight();
+    addButton();
+    turnOffLight();
     document.getElementById("todoInput").addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
-            entertext();
+            enterText();
         }
     });
 });
@@ -30,13 +30,13 @@ function saveTodo() {
 }
 
 //click the addbutton action
-function addbutton() {
+function addButton() {
     const addbutton = document.getElementById("addTodo");
-    addbutton.addEventListener("click", entertext);
+    addbutton.addEventListener("click", enterText);
 }
 
 //user key text 
-function entertext() {
+function enterText() {
     const enter = document.getElementById("todoInput");
     const input = enter.value.trim();
     
@@ -178,7 +178,7 @@ function deleteAll() {
 }
 
 //change page theme
-function turnoffLight() {
+function turnOffLight() {
     const mode = document.getElementById("mode")
     document.getElementById("Theme").addEventListener("click", () => {
         mode.classList.toggle("darkmode");
@@ -240,7 +240,7 @@ function callDogApi() {
         .then(re => re.json())
         .then(data => {
             console.log(data);
-            document.querySelector('#Picture').innerHTML = `<img src="${data.message}" class="Picture" alt="dog" />`;
+            document.querySelector('#picture').innerHTML = `<img src="${data.message}" class="picture" alt="dog" />`;
         })
         .catch(err => console.error(err));
 }
@@ -250,7 +250,7 @@ function callCatApi() {
         .then(re => re.json())
         .then(data => {
             console.log(data);
-            document.querySelector('#Picture').innerHTML = `<img src="${data.url}" class="Picture" alt="cat" />`;
+            document.querySelector('#picture').innerHTML = `<img src="${data.url}" class="picture" alt="cat" />`;
         })
         .catch(err => console.error(err));
 }
